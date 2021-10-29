@@ -61,6 +61,7 @@
 - [#4582](https://github.com/blockscout/blockscout/pull/4582) - Fix NaN input on write contract page
 
 ### Chore
+- [#4861](https://github.com/blockscout/blockscout/pull/4861) - Add separate column for token icons
 - [#4828](https://github.com/blockscout/blockscout/pull/4828) - Logging for txs/day chart
 - [#4823](https://github.com/blockscout/blockscout/pull/4823) - Various error handlers with unresponsive JSON RPC endpoint
 - [#4821](https://github.com/blockscout/blockscout/pull/4821) - Block Details page: Remove crossing at the Burnt Fee line
