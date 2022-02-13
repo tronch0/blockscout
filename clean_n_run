@@ -1,0 +1,40 @@
+# blockscout DB - stop, remove and run new one
+docker kill postgresql-container-1
+docker rm postgresql-container-1
+docker run -d --name postgresql-container-1 -p 5432:5432 -e POSTGRES_USER=blockscout -e POSTGRES_PASSWORD=somePassword postgres
+
+# populate env vars
+export SECRET_KEY_BASE=VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No
+export ETHEREUM_JSONRPC_VARIANT=geth
+export ETHEREUM_JSONRPC_HTTP_URL=127.0.0.1:9650/ext/bc/C/rpc
+export DATABASE_URL=postgresql://blockscout:somePassword@localhost:5432/blockscout
+export COIN=AVAX
+
+export LOGO=/Gradient.svg
+export COINGECKO_COIN_ID=avalanche-2
+
+
+# remove previous state
+rm -rf _build deps apps/block_scout_web/assets/node_modules apps/explorer/node_modules logs/dev
+
+# compile and download needed packages
+mix do deps.get, local.rebar --force, deps.compile, compile
+mix do ecto.create, ecto.migrate
+
+cd apps/block_scout_web/assets; npm install && node_modules/webpack/bin/webpack.js --mode production; cd -
+cd apps/explorer && npm install; cd -
+mix phx.digest
+# cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local; cd -
+
+# add certs
+# cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local; cd -
+
+# add to /etc/hosts
+#    127.0.0.1       localhost blockscout blockscout.local
+
+#    255.255.255.255 broadcasthost
+
+#    ::1             localhost blockscout blockscout.local
+
+# run explorer
+mix phx.server
