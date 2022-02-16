@@ -10,7 +10,7 @@ export ETHEREUM_JSONRPC_HTTP_URL=127.0.0.1:9650/ext/bc/C/rpc
 export DATABASE_URL=postgresql://blockscout:somePassword@localhost:5432/blockscout
 export COIN=AVAX
 
-export LOGO=/Gradient.svg
+export LOGO=/images/Gradient.svg
 export COINGECKO_COIN_ID=avalanche-2
 
 
