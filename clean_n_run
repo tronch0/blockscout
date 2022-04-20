@@ -4,6 +4,8 @@ docker rm postgresql-container-1
 docker run -d --name postgresql-container-1 -p 5432:5432 -e POSTGRES_USER=blockscout -e POSTGRES_PASSWORD=somePassword postgres
 
 # populate env vars
+
+
 export SECRET_KEY_BASE=VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No
 export ETHEREUM_JSONRPC_VARIANT=geth
 export ETHEREUM_JSONRPC_HTTP_URL=127.0.0.1:9650/ext/bc/C/rpc
@@ -11,7 +13,7 @@ export DATABASE_URL=postgresql://blockscout:somePassword@localhost:5432/blocksco
 export COIN=AVAX
 
 export LOGO=/images/Gradient.svg
-export COINGECKO_COIN_ID=avalanche-2
+# export COINGECKO_COIN_ID=avalanche-2
 
 
 # remove previous state
