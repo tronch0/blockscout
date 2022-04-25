@@ -8,9 +8,9 @@ docker run -d --name postgresql-container-1 -p 5432:5432 -e POSTGRES_USER=blocks
 
 export SECRET_KEY_BASE=VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No
 export ETHEREUM_JSONRPC_VARIANT=geth
-export ETHEREUM_JSONRPC_HTTP_URL=127.0.0.1:9650/ext/bc/C/rpc
+export ETHEREUM_JSONRPC_HTTP_URL=http://10.10.90.186:9650/ext/bc/C/rpc
 export DATABASE_URL=postgresql://blockscout:somePassword@localhost:5432/blockscout
-export COIN=AVAX
+export COIN=XCEL
 
 export LOGO=/images/Gradient.svg
 # export COINGECKO_COIN_ID=avalanche-2
